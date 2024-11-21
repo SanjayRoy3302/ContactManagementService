@@ -6,10 +6,12 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ContactManagementService.Model;
+using Microsoft.AspNetCore.Authorization;
 
 namespace ContactManagementService.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/ContactDetails/")]
+    [AllowAnonymous]
     [ApiController]
     public class ContactDetailsController : ControllerBase
     {
@@ -22,6 +24,8 @@ namespace ContactManagementService.Controllers
 
         // GET: api/ContactDetails
         [HttpGet]
+        [AllowAnonymous]
+        [Route("GetAllContacts")]
         public async Task<ActionResult<IEnumerable<ContactDetails>>> GetContactDetails()
         {
             return await _context.ContactDetails.ToListAsync();
@@ -29,6 +33,7 @@ namespace ContactManagementService.Controllers
 
         // GET: api/ContactDetails/5
         [HttpGet("{id}")]
+        [AllowAnonymous]
         public async Task<ActionResult<ContactDetails>> GetContactDetails(int id)
         {
             var contactDetails = await _context.ContactDetails.FindAsync(id);
@@ -75,6 +80,7 @@ namespace ContactManagementService.Controllers
         // POST: api/ContactDetails
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
+        [Route("SaveContact")]
         public async Task<ActionResult<ContactDetails>> PostContactDetails(ContactDetails contactDetails)
         {
             _context.ContactDetails.Add(contactDetails);
@@ -96,7 +102,7 @@ namespace ContactManagementService.Controllers
             _context.ContactDetails.Remove(contactDetails);
             await _context.SaveChangesAsync();
 
-            return NoContent();
+                return NoContent();
         }
 
         private bool ContactDetailsExists(int id)
