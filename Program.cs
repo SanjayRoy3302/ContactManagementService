@@ -1,3 +1,5 @@
+using ContactManagementService.DataAccessLayer;
+using ContactManagementService.ServiceLayer;
 using Microsoft.EntityFrameworkCore;
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<ContactManagementServiceContext>(options =>
@@ -6,6 +8,7 @@ builder.Services.AddDbContext<ContactManagementServiceContext>(options =>
 // Add services to the container.
 
 builder.Services.AddControllers();
+builder.Services.AddTransient<IContactDetailsService, ContactDetailsDAL>();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();

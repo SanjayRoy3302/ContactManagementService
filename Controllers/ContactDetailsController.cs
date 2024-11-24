@@ -7,6 +7,9 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ContactManagementService.Model;
 using Microsoft.AspNetCore.Authorization;
+using ContactManagementService.ServiceLayer;
+using ContactManagementService.BusinessLayer;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
 
 namespace ContactManagementService.Controllers
 {
@@ -15,11 +18,11 @@ namespace ContactManagementService.Controllers
     [ApiController]
     public class ContactDetailsController : ControllerBase
     {
-        private readonly ContactManagementServiceContext _context;
+        private readonly IContactDetailsService _BAL;
 
-        public ContactDetailsController(ContactManagementServiceContext context)
+        public ContactDetailsController(IContactDetailsService contactDetailsService)
         {
-            _context = context;
+            _BAL = contactDetailsService;
         }
 
         // GET: api/ContactDetails
@@ -28,22 +31,7 @@ namespace ContactManagementService.Controllers
         [Route("GetAllContacts")]
         public async Task<ActionResult<IEnumerable<ContactDetails>>> GetContactDetails()
         {
-            return await _context.ContactDetails.ToListAsync();
-        }
-
-        // GET: api/ContactDetails/5
-        [HttpGet("{id}")]
-        [AllowAnonymous]
-        public async Task<ActionResult<ContactDetails>> GetContactDetails(int id)
-        {
-            var contactDetails = await _context.ContactDetails.FindAsync(id);
-
-            if (contactDetails == null)
-            {
-                return NotFound();
-            }
-
-            return contactDetails;
+            return await _BAL.GetAllContactsList();
         }
 
         // PUT: api/ContactDetails/5
@@ -51,63 +39,28 @@ namespace ContactManagementService.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> PutContactDetails(int id, ContactDetails contactDetails)
         {
-            if (id != contactDetails.Id)
-            {
-                return BadRequest();
-            }
-
-            _context.Entry(contactDetails).State = EntityState.Modified;
-
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!ContactDetailsExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return NoContent();
+            BaseResponseModel result = await _BAL.UpdateContact(contactDetails);
+            return Ok(result);
         }
 
         // POST: api/ContactDetails
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        [Route("SaveContact")]
+        //[Route("SaveContact")]
         public async Task<ActionResult<ContactDetails>> PostContactDetails(ContactDetails contactDetails)
         {
-            _context.ContactDetails.Add(contactDetails);
-            await _context.SaveChangesAsync();
+            BaseResponseModel result = await _BAL.AddContact(contactDetails);
 
-            return CreatedAtAction("GetContactDetails", new { id = contactDetails.Id }, contactDetails);
+            return Ok(result);
         }
 
         // DELETE: api/ContactDetails/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteContactDetails(int id)
         {
-            var contactDetails = await _context.ContactDetails.FindAsync(id);
-            if (contactDetails == null)
-            {
-                return NotFound();
-            }
-
-            _context.ContactDetails.Remove(contactDetails);
-            await _context.SaveChangesAsync();
-
-                return NoContent();
+            BaseResponseModel result = await _BAL.DeleteContact(id);
+            return Ok(result);
         }
 
-        private bool ContactDetailsExists(int id)
-        {
-            return _context.ContactDetails.Any(e => e.Id == id);
-        }
     }
 }
