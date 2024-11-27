@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ContactManagementService", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContactServiceLayer", "..\ContactServiceLayer\ContactServiceLayer.csproj", "{9EC56357-10A5-44ED-8D7C-5BA2E62EE18E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContactDataAccessLayer", "..\ContactDataAccessLayer\ContactDataAccessLayer.csproj", "{032DF770-C327-451B-86DB-360214B514B0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{9EC56357-10A5-44ED-8D7C-5BA2E62EE18E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9EC56357-10A5-44ED-8D7C-5BA2E62EE18E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9EC56357-10A5-44ED-8D7C-5BA2E62EE18E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{032DF770-C327-451B-86DB-360214B514B0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{032DF770-C327-451B-86DB-360214B514B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{032DF770-C327-451B-86DB-360214B514B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{032DF770-C327-451B-86DB-360214B514B0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
