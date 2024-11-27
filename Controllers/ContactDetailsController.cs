@@ -54,5 +54,16 @@ namespace ContactManagementService.Controllers
             return Ok(result);
         }
 
+        // GET: api/ContactDetails
+        [HttpGet]
+        [AllowAnonymous]
+        [Route("CheckGlobalException")]
+        public ActionResult<IEnumerable<ContactDetails>> CheckGlobalException()
+        {
+            var list = _BAL.GetAllContactsList();
+            var exception = list[100].Firstname;
+            return _BAL.GetAllContactsList();
+        }
+
     }
 }
