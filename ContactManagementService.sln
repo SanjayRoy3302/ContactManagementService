@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContactServiceLayer", "..\C
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContactDataAccessLayer", "..\ContactDataAccessLayer\ContactDataAccessLayer.csproj", "{032DF770-C327-451B-86DB-360214B514B0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContactBusinessLayer", "..\ContactBusinessLayer\ContactBusinessLayer.csproj", "{46874159-A4D2-45E3-9CC7-CE4414B8985B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{032DF770-C327-451B-86DB-360214B514B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{032DF770-C327-451B-86DB-360214B514B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{032DF770-C327-451B-86DB-360214B514B0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{46874159-A4D2-45E3-9CC7-CE4414B8985B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{46874159-A4D2-45E3-9CC7-CE4414B8985B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{46874159-A4D2-45E3-9CC7-CE4414B8985B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{46874159-A4D2-45E3-9CC7-CE4414B8985B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

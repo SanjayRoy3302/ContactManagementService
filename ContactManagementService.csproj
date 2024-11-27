@@ -7,6 +7,29 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="BusinessLayer\**" />
+    <Compile Remove="DataAccessLayer\**" />
+    <Compile Remove="Data\**" />
+    <Compile Remove="Model\**" />
+    <Compile Remove="ServiceLayer\**" />
+    <Content Remove="BusinessLayer\**" />
+    <Content Remove="DataAccessLayer\**" />
+    <Content Remove="Data\**" />
+    <Content Remove="Model\**" />
+    <Content Remove="ServiceLayer\**" />
+    <EmbeddedResource Remove="BusinessLayer\**" />
+    <EmbeddedResource Remove="DataAccessLayer\**" />
+    <EmbeddedResource Remove="Data\**" />
+    <EmbeddedResource Remove="Model\**" />
+    <EmbeddedResource Remove="ServiceLayer\**" />
+    <None Remove="BusinessLayer\**" />
+    <None Remove="DataAccessLayer\**" />
+    <None Remove="Data\**" />
+    <None Remove="Model\**" />
+    <None Remove="ServiceLayer\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="9.0.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="9.0.0">
@@ -16,6 +39,11 @@
     <PackageReference Include="Microsoft.Extensions.Configuration" Version="9.0.0" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="8.0.7" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ContactBusinessLayer\ContactBusinessLayer.csproj" />
+    <ProjectReference Include="..\ContactServiceLayer\ContactServiceLayer.csproj" />
   </ItemGroup>
 
 </Project>

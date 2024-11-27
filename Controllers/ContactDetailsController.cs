@@ -1,15 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using ContactManagementService.Model;
+﻿using ContactServiceLayer;
+using ContactServiceLayer.Models;
 using Microsoft.AspNetCore.Authorization;
-using ContactManagementService.ServiceLayer;
-using ContactManagementService.BusinessLayer;
-using Microsoft.CodeAnalysis.CSharp.Syntax;
+using Microsoft.AspNetCore.Mvc;
 
 namespace ContactManagementService.Controllers
 {
@@ -29,17 +21,17 @@ namespace ContactManagementService.Controllers
         [HttpGet]
         [AllowAnonymous]
         [Route("GetAllContacts")]
-        public async Task<ActionResult<IEnumerable<ContactDetails>>> GetContactDetails()
+        public ActionResult<IEnumerable<ContactDetails>> GetContactDetails()
         {
-            return await _BAL.GetAllContactsList();
+            return _BAL.GetAllContactsList();
         }
 
         // PUT: api/ContactDetails/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutContactDetails(int id, ContactDetails contactDetails)
+        public IActionResult PutContactDetails(int id, ContactDetails contactDetails)
         {
-            BaseResponseModel result = await _BAL.UpdateContact(contactDetails);
+            BaseResponseModel result = _BAL.UpdateContact(contactDetails);
             return Ok(result);
         }
 
@@ -47,18 +39,18 @@ namespace ContactManagementService.Controllers
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
         //[Route("SaveContact")]
-        public async Task<ActionResult<ContactDetails>> PostContactDetails(ContactDetails contactDetails)
+        public ActionResult<ContactDetails> PostContactDetails(ContactDetails contactDetails)
         {
-            BaseResponseModel result = await _BAL.AddContact(contactDetails);
+            BaseResponseModel result = _BAL.AddContact(contactDetails);
 
             return Ok(result);
         }
 
         // DELETE: api/ContactDetails/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteContactDetails(int id)
+        public IActionResult DeleteContactDetails(int id)
         {
-            BaseResponseModel result = await _BAL.DeleteContact(id);
+            BaseResponseModel result = _BAL.DeleteContact(id);
             return Ok(result);
         }
 
