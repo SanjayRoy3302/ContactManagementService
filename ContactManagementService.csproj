@@ -1,33 +1,10 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
-
-  <ItemGroup>
-    <Compile Remove="BusinessLayer\**" />
-    <Compile Remove="DataAccessLayer\**" />
-    <Compile Remove="Data\**" />
-    <Compile Remove="Model\**" />
-    <Compile Remove="ServiceLayer\**" />
-    <Content Remove="BusinessLayer\**" />
-    <Content Remove="DataAccessLayer\**" />
-    <Content Remove="Data\**" />
-    <Content Remove="Model\**" />
-    <Content Remove="ServiceLayer\**" />
-    <EmbeddedResource Remove="BusinessLayer\**" />
-    <EmbeddedResource Remove="DataAccessLayer\**" />
-    <EmbeddedResource Remove="Data\**" />
-    <EmbeddedResource Remove="Model\**" />
-    <EmbeddedResource Remove="ServiceLayer\**" />
-    <None Remove="BusinessLayer\**" />
-    <None Remove="DataAccessLayer\**" />
-    <None Remove="Data\**" />
-    <None Remove="Model\**" />
-    <None Remove="ServiceLayer\**" />
-  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.0" />
@@ -42,8 +19,14 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ContactBusinessLayer\ContactBusinessLayer.csproj" />
-    <ProjectReference Include="..\ContactServiceLayer\ContactServiceLayer.csproj" />
+    <Reference Include="ContactBusinessLayer">
+      <HintPath>ReferenceDLL\ContactBusinessLayer.dll</HintPath>
+    </Reference>
+    <Reference Include="ContactDataAccessLayer">
+      <HintPath>ReferenceDLL\ContactDataAccessLayer.dll</HintPath>
+    </Reference>
+    <Reference Include="ContactServiceLayer">
+      <HintPath>ReferenceDLL\ContactServiceLayer.dll</HintPath>
+    </Reference>
   </ItemGroup>
-
 </Project>
