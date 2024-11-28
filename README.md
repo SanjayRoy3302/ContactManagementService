@@ -4,11 +4,11 @@
 # New Contact details service added with entity framework
 
 # ****** Important ******
-# Need to download ContactServiceLayer from the github repo from https://github.com/SanjayRoy3302/ContactServiceLayer.git.
-# Need to download ContactDetailsDataAccessLayer from the github repo from https://github.com/SanjayRoy3302/ContactDetailsDataAccessLayer.git.
-# Need to download ContactDetailsBusinessLayer from the github repo from https://github.com/SanjayRoy3302/ContactDetailsBusinessLayer.git.
-# Add all the layered project i.e ContactServiceLayer, ContactDetailsDataAccessLayer, ContactDetailsBusinessLayer as an existing project in the existing solution of ContactManagementService
-# Add the Project Reference from Add-reference option in the ContactManagementService solution (If required).
+# Reference DLL added into the solution which is used for different layered in the project.
+# To review the ServicLayer code Need to download ContactServiceLayer from the github repo from https://github.com/SanjayRoy3302/ContactServiceLayer.git.
+# To review the DataAccessLayer code Need to download ContactDetailsDataAccessLayer from the github repo from https://github.com/SanjayRoy3302/ContactDetailsDataAccessLayer.git.
+# To review the BusinessLayer code Need to download ContactDetailsBusinessLayer from the github repo from https://github.com/SanjayRoy3302/ContactDetailsBusinessLayer.git.
+# Add the Project Reference from Add-reference option >> select browse >> select ReferenceDLL folder and select all DLL's in the ContactManagementService solution (If required).
 # Build the entire solution
 # Run the dotnet core ContactDetailsService.
 # copy the end-point and replace the ContactRespositoryService apiurl end-point value. 
